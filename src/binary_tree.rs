@@ -1,17 +1,17 @@
 use std::{cmp, fmt};
 
 /// Node type alias
-type NodeRef<T> = Option<Box<TreeNode<T>>>;
+pub type NodeRef<T> = Option<Box<TreeNode<T>>>;
 
 /// Parent Node type alias
 type ParentPointer<T> = *mut TreeNode<T>;
 
 #[derive(Debug)]
 pub struct TreeNode<T: fmt::Display> {
-    value: T,
-    left: NodeRef<T>,
-    right: NodeRef<T>,
-    parent: ParentPointer<T>,
+    pub value: T,
+    pub left: NodeRef<T>,
+    pub right: NodeRef<T>,
+    pub parent: ParentPointer<T>,
 }
 
 impl<T: fmt::Display> fmt::Display for TreeNode<T> {
@@ -32,7 +32,7 @@ impl<T: fmt::Display> TreeNode<T> {
 }
 
 pub struct BinaryTree<T: fmt::Display> {
-    root: NodeRef<T>,
+    pub root: NodeRef<T>,
 }
 
 impl<T: fmt::Display + PartialOrd> BinaryTree<T> {

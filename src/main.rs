@@ -1,4 +1,4 @@
-use binary_tree::BinaryTree;
+use binary_tree::{BinaryTree, binary_search::binary_search};
 
 fn main() {
     println!("================ Rust Binary Tree! ================\n\n");
@@ -21,7 +21,7 @@ fn main() {
     binary_tree.add(16);
     binary_tree.add(10);
     binary_tree.add(13);
-    binary_tree.add(10);
+    binary_tree.add(56);
     binary_tree.add(112);
     binary_tree.add(1000);
     binary_tree.add(64);
@@ -31,5 +31,15 @@ fn main() {
     println!(
         "Height of binary tree is: [{}]",
         BinaryTree::binary_tree_height(&binary_tree)
-    )
+    );
+
+    let value_to_find = 10001;
+
+    let found = binary_search(&binary_tree, &value_to_find);
+
+    if found {
+        println!("Value [{}] was found in binary tree", value_to_find)
+    } else {
+        println!("Value [{}] was not found in binary tree", value_to_find)
+    }
 }
