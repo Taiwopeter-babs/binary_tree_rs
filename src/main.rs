@@ -33,7 +33,7 @@ fn main() {
         BinaryTree::binary_tree_height(&binary_tree)
     );
 
-    let value_to_find = 10001;
+    let value_to_find = 112;
 
     let found = binary_search(&binary_tree, &value_to_find);
 

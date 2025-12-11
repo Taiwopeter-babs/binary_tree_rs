@@ -1,4 +1,7 @@
-use std::{cmp, fmt};
+use std::{
+    cmp, fmt,
+    ops::{Deref, DerefMut},
+};
 
 /// Node type alias
 pub type NodeRef<T> = Option<Box<TreeNode<T>>>;
@@ -14,6 +17,24 @@ pub struct TreeNode<T: fmt::Display> {
     pub parent: ParentPointer<T>,
 }
 
+impl<T: fmt::Display> Deref for TreeNode<T> {
+    type Target = T;
+
+    fn deref(&self) -> &Self::Target {
+        &self.value
+    }
+}
+
+impl<T: fmt::Display> DerefMut for TreeNode<T> {
+    // fn deref_mut(&mut self) -> &mut Self::Target {
+    //     &mut self.value
+    // }
+
+    fn deref_mut(&mut self) -> &mut Self::Target {
+        &mut self.value
+    }
+}
+
 impl<T: fmt::Display> fmt::Display for TreeNode<T> {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "[{}]", self.value)
@@ -21,6 +42,7 @@ impl<T: fmt::Display> fmt::Display for TreeNode<T> {
 }
 
 impl<T: fmt::Display> TreeNode<T> {
+    /// Creates a new binary tree node.
     pub fn new(value: T, parent: ParentPointer<T>) -> Self {
         TreeNode {
             value,
@@ -43,6 +65,7 @@ impl<T: fmt::Display + PartialOrd> BinaryTree<T> {
     pub fn add(&mut self, value: T) {
         match self.root {
             None => self.root = Some(Box::new(TreeNode::new(value, std::ptr::null_mut()))),
+
             Some(ref mut root_node) => {
                 if value > root_node.value {
                     Self::insert_left(root_node, value);
