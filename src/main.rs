@@ -1,4 +1,4 @@
-use binary_tree::{BinaryTree, binary_search::binary_search};
+use tol_binary_tree::{BinaryTree, binary_search::binary_search};
 
 fn main() {
     println!("================ Rust Binary Tree! ================\n\n");
