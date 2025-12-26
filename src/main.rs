@@ -25,6 +25,14 @@ fn main() {
     binary_tree.add(112);
     binary_tree.add(1000);
     binary_tree.add(64);
+    binary_tree.add(21);
+    binary_tree.add(16);
+    binary_tree.add(456);
+    binary_tree.add(211);
+    binary_tree.add(876);
+    binary_tree.add(432);
+    binary_tree.add(100);
+    binary_tree.add(32);
 
     BinaryTree::print_tree(&binary_tree);
 

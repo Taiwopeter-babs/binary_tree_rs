@@ -1,14 +1,13 @@
 use crate::{BinaryTree, binary_tree::NodeRef};
 use core::fmt;
 
-/// Searches for `value` in a binary tree
+/// Searches for a `value` in a binary tree
 ///
 /// # Example
 /// ```
-
-/// use binary_tree::{BinaryTree, binary_search};
+/// use tol_binary_tree::{BinaryTree, binary_search};
 ///
-/// let mut binary_tree: binary_tree::BinaryTree<i32> = binary_tree::BinaryTree::new();
+/// let mut binary_tree: BinaryTree<i32> = BinaryTree::new();
 ///
 /// binary_tree.add(10);
 /// binary_tree.add(27);
@@ -22,9 +21,9 @@ use core::fmt;
 ///
 /// let value2_to_find = 34;
 ///
-/// let found1 = binary_search::binary_search(&binary_tree, &value1_to_find);
+/// let found1 = binary_search(&binary_tree, &value1_to_find);
 ///
-/// let found2 = binary_search::binary_search(&binary_tree, &value2_to_find);
+/// let found2 = binary_search(&binary_tree, &value2_to_find);
 ///
 /// assert_eq!(found1, false);
 /// assert_eq!(found2, true);
@@ -47,16 +46,16 @@ where
     }
 
     if let Some(node_value) = node {
-        if node_value.value == *value {
+        if node_value.borrow().value == *value {
             return true;
         }
 
-        if *value > node_value.value {
-            return search_node(&node_value.left, value);
+        if *value > node_value.borrow().value {
+            return search_node(&node_value.borrow().left, value);
         }
 
-        if *value < node_value.value {
-            return search_node(&node_value.right, value);
+        if *value < node_value.borrow().value {
+            return search_node(&node_value.borrow().right, value);
         }
     }
 
