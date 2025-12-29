@@ -1,6 +1,8 @@
 [package]
-name = "binary_tree"
+name = "tol_binary_tree"
 version = "0.1.0"
 edition = "2024"
+description = "A Simple implementation of binary tree in rust"
+license = "MIT OR Apache-2.0"
 
 [dependencies]

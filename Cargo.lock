@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "binary_tree"
+name = "tol_binary_tree"
 version = "0.1.0"
